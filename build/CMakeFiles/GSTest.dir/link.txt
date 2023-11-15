@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/GSTest.dir/tests/test_gs.cpp.o -o GSTest  lib/libgtest.a lib/libgtest_main.a lib/libgtest.a 
