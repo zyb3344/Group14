@@ -10,9 +10,11 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/external/googletest)
 # Include directories
 include_directories(${CMAKE_SOURCE_DIR}/external/gray-scott-sim)
 
-# Add your main executable
+# main executable
 add_executable(MainProgram src/main.cpp external/gray-scott-sim/gs.cpp)
 
-# Add the test executable
+# test executable
 add_executable(GSTest tests/test_gs.cpp)
 target_link_libraries(GSTest gtest gtest_main)
+
+

@@ -301,6 +301,9 @@ Project_IS_TOP_LEVEL:STATIC=ON
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/home/adrian/OneDrive/Documents/Master of Computer Science/Professional Skills/respiratory/Code-Development
 
+//The directory containing a CMake configuration file for VTK.
+VTK_DIR:PATH=/usr/lib/cmake/vtk-7.1
+
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/adrian/OneDrive/Documents/Master of Computer Science/Professional Skills/respiratory/Code-Development/build/external/googletest/googlemock
 
