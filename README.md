@@ -1,27 +1,16 @@
 [![Windows Build Status (appveyor.com)](https://img.shields.io/appveyor/ci/mity/acutest/master.svg?logo=windows&label=windows%20build)](https://ci.appveyor.com/project/mity/acutest/branch/master)
 
-
 # Gray-Scott Reaction-Diffusion Simulation
 # Description
-Develop basic documentation for building the very
-impressive software developed by this company. Our target audience is the group of new
-interns expected to join the company. Additionally, we are implementing a
-build system and continuous integration for the repository to ensure the interns cannot break
-it too badly. 
-we are simulation a Gray-Scott reaction and implementing 3 tests for the system.
-
-* Check that the type of the model parameters (F, k) matches that of the element type
-of the u and v vectors
-
-* Check that the variables u and v are the same size
-
-* Check that the simulation produces the mathematically correct answer when u = 0 and
-v = 0.
+This is a simulation application through calculating a series of given parameters and several functions and algorithms to achieve simulation of Gray-Scott Reaction-Diffusion
 
 # Building the application locally
 Prerequisites:
+
 A compatible operating system (e.g. Linux, macOS, Windows).
+
 A compatible C++ compiler that supports at least C++14.
+
 CMake and a compatible build tool for building the project.
 
 # Steps 
@@ -64,14 +53,20 @@ Note: Change the path name above according to your path name witch contains CMak
 
 # Testing 
 
-This project uses Acutest for unit testing. The tests cover various aspects of the simulation:
+Acutest is C/C++ unit testing facility aiming to be as simple as possible, not to stand in the developer's way and to minimize any external dependencies.
 
-* Type_check: Ensures the data types of simulation parameters are correct.
-* Size_check: Verifies that the simulation grids for different chemical species are of the same size
-* Answer_check: Checks if the simulation results stay within expected bounds.
+To achieve that, the complete implementation resides in a single C header file, and its core depends only on few standard C library functions.
 
-To run the test, use the following command line:
+For more information, please check the link: https://github.com/mity/acutest
 
-``` C
-make test
-```
+The automated test is already integrated in the GitHub action document in this repository in order to check whether the source code of the application performs normally.
+
+However, you can still perform the test locally by building and making the test.cpp file under the source code directory through CMake commands.
+
+Here are several explanations for the test functions in the test.cpp file:
+
+* Type_check: Check that the type of the model parameters (F, k) matches that of the element type
+of the u and v vectors.
+* Size_check: Check that the variables u and v are the same size
+* Answer_check: Check that the simulation produces the mathematically correct answer when u = 0 and
+v = 0.
