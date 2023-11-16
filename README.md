@@ -54,8 +54,5 @@ This will execute all unit tests and provide a summary of the test results.
 ## Contributing
 Contributions to the project are welcome. If you would like to contribute, please fork the repository and submit a pull request with your changes.
 
-## License
-This project is licensed under the [MIT License](LICENSE).
-
 ## Acknowledgements
 This project utilises the Google Test framework for unit testing, which is included as a submodule in the external directory.
