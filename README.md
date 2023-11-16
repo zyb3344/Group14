@@ -70,3 +70,6 @@ of the u and v vectors.
 * Size_check: Check that the variables u and v are the same size
 * Answer_check: Check that the simulation produces the mathematically correct answer when u = 0 and
 v = 0.
+
+# Continuous Integration 
+Continuous integration is set up using c-cpp.yml, ensuring that every commit passes all tests and meets the coding standards.
