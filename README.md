@@ -35,11 +35,32 @@ git clone https://github.com/scicomp-durham/gray-scott-sim.git
 ``` C
 cd gray-scott-sim
 ```
-3. Build the project using Make:
+
+3. Create the CMakeLists.txt under the project directory:
+``` C
+touch CMakeLists.txt
+```
+and add content below
+``` C
+cmake_minimum_required(VERSION 3.10)
+project(GS_sim)
+
+set(SOURCE_FILES gs.cpp)
+
+add_executable(runGS ${SOURCE_FILES})
+```
+
+4. Build the project:
+Note: Please change the current directory to project directory first
 
 ``` C
-make all 
+mkdir build
+cd build
+cmake /Users/balencicash/Documents/ProSkills/gs/gray-scott-sim
+make
+./runGS
 ```
+Note: Change the path name above according to your path name witch contains CMakeLists.txt
 
 # Testing 
 
@@ -54,6 +75,3 @@ To run the test, use the following command line:
 ``` C
 make test
 ```
-
-# continuous integration 
-Continuous integration is set up using [Your CI tool], ensuring that every commit passes all tests and meets the coding standards.
