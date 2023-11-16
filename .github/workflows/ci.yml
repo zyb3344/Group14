@@ -16,10 +16,12 @@ jobs:
       run: sudo apt-get update && sudo apt-get install -y cmake g++ make
     - name: Configure CMake
       run: |
-        if [ ! -d "build" ]; then
-          mkdir build
+        if [ ! -d "/home/runner/work/Code-Development/Code-Development/build" ]; then
+          mkdir /home/runner/work/Code-Development/Code-Development/build
         fi
-        cd build
-        cmake -S .. -B .
+        cd /home/runner/work/Code-Development/Code-Development/build
+        cmake -S /home/runner/work/Code-Development/Code-Development -B .
+    - name: Build
+      run: cmake --build /home/runner/work/Code-Development/Code-Development/build
     - name: Run tests
-      run: ./build/GSTest
+      run: /home/runner/work/Code-Development/Code-Development/build/GSTest
