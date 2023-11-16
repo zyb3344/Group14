@@ -3,24 +3,29 @@ name: CI
 on:
   push:
     branches:
-      - main  # 触发条件：推送到主分支时触发
+      - main
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # 使用 Ubuntu 作为运行环境
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code  # 克隆代码
+    - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Setup CMake  # 设置 CMake
+    - name: Setup CMake
       run: |
         sudo apt-get update
         sudo apt-get install -y cmake
 
-    - name: Build project  # 构建项目
+    - name: Check if build directory exists
       run: |
-        mkdir build
+        if [ ! -d "build" ]; then
+          mkdir build
+        fi
+
+    - name: Build project
+      run: |
         cd build
         cmake ..
         make
@@ -37,14 +42,19 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y cmake
 
+    - name: Check if build directory exists
+      run: |
+        if [ ! -d "build" ]; then
+          mkdir build
+        fi
+
     - name: Build project
       run: |
-        mkdir build
         cd build
         cmake ..
         make
 
-    - name: Run tests  # 运行测试
+    - name: Run tests
       run: |
         cd build
         ./GSTest
