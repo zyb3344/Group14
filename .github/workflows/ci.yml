@@ -1,22 +1,50 @@
-name: C++ CI
+name: CI
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches:
+      - main  # 触发条件：推送到主分支时触发
 
 jobs:
-  build-and-test:
+  build:
+    runs-on: ubuntu-latest  # 使用 Ubuntu 作为运行环境
+
+    steps:
+    - name: Checkout code  # 克隆代码
+      uses: actions/checkout@v2
+
+    - name: Setup CMake  # 设置 CMake
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake
+
+    - name: Build project  # 构建项目
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make
+
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Install dependencies
-      run: sudo apt-get update && sudo apt-get install -y cmake g++ make
-    - name: Configure CMake
-      run: cmake -S . -B build
-    - name: Build
-      run: cmake --build build
-    - name: Run tests
-      run: ./build/GSTest
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Setup CMake
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y cmake
+
+    - name: Build project
+      run: |
+        mkdir build
+        cd build
+        cmake ..
+        make
+
+    - name: Run tests  # 运行测试
+      run: |
+        cd build
+        ./GSTest
