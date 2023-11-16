@@ -13,6 +13,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Set working directory
+      run: |
+        cd Code-Development  # Change this to the root directory of your project
+
     - name: Setup CMake
       run: |
         sudo apt-get update
@@ -36,6 +40,10 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
+
+    - name: Set working directory
+      run: |
+        cd Code-Development
 
     - name: Setup CMake
       run: |
