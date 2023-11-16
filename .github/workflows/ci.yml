@@ -13,7 +13,7 @@ jobs:
     - name: Checkout code with submodules
       uses: actions/checkout@v2
       with:
-        submodules: 'recursive' # 这将递归检出所有子模块
+        submodules: 'recursive' # check the submodule
 
     - name: Install CMake
       run: sudo apt-get update && sudo apt-get install -y cmake
