@@ -2,9 +2,9 @@ name: C++ CI
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   pull_request:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   build-and-test:
@@ -15,13 +15,8 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get update && sudo apt-get install -y cmake g++ make
     - name: Configure CMake
-      run: |
-        if [ ! -d "/home/runner/work/Code-Development/Code-Development/build" ]; then
-          mkdir /home/runner/work/Code-Development/Code-Development/build
-        fi
-        cd /home/runner/work/Code-Development/Code-Development/build
-        cmake -S /home/runner/work/Code-Development/Code-Development -B .
+      run: cmake -S . -B build
     - name: Build
-      run: cmake --build /home/runner/work/Code-Development/Code-Development/build
+      run: cmake --build build
     - name: Run tests
-      run: /home/runner/work/Code-Development/Code-Development/build/GSTest
+      run: ./build/GSTest
