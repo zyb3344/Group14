@@ -1,4 +1,4 @@
-name: CI
+name: C++ CI
 
 on:
   push:
@@ -6,52 +6,29 @@ on:
       - gtest_adrian
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
+    - name: Checkout code with submodules
       uses: actions/checkout@v2
+      with:
+        submodules: 'recursive' # 这将递归检出所有子模块
 
-    - name: Setup CMake
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake
+    - name: Install CMake
+      run: sudo apt-get update && sudo apt-get install -y cmake
 
-    - name: Check if build directory exists
-      run: |
-        if [ ! -d "build" ]; then
-          mkdir build
-        fi
+    - name: Create build directory
+      run: mkdir -p build
 
-    - name: Build project
+    - name: Configure CMake
       run: |
         cd build
         cmake ..
-        make
 
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Setup CMake
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y cmake
-
-    - name: Check if build directory exists
-      run: |
-        if [ ! -d "build" ]; then
-          mkdir build
-        fi
-
-    - name: Build project
+    - name: Build
       run: |
         cd build
-        cmake ..
         make
 
     - name: Run tests
